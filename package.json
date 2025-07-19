@@ -1,0 +1,19 @@
+{
+  "name": "advance-sos-monorepo",
+  "version": "1.0.0",
+  "description": "Monorepo for Advance SOS website and admin panel",
+  "scripts": {
+    "build": "npm run build:info-web && npm run build:admin-panel",
+    "build:info-web": "cd apps/info-web && npm install && npm run build",
+    "build:admin-panel": "cd apps/admin-panel && npm install && npm run build",
+    "dev": "concurrently \"npm run dev:info-web\" \"npm run dev:admin-panel\"",
+    "dev:info-web": "cd apps/info-web && npm run dev",
+    "dev:admin-panel": "cd apps/admin-panel && npm run dev -- --port 8081",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "concurrently": "^8.2.2"
+  },
+  "private": true
+} 
