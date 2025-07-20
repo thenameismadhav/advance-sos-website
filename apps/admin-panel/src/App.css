@@ -19,3 +19,195 @@
     animation: logo-spin infinite 20s linear;
   }
 }
+
+/* Admin Dashboard Font Optimization for 75% Zoom */
+.admin-dashboard {
+  font-size: 14px; /* Base font size for better visibility at 75% zoom */
+  line-height: 1.4;
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.admin-dashboard h1,
+.admin-dashboard h2,
+.admin-dashboard h3 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+}
+
+.admin-dashboard .text-xs {
+  font-size: 12px !important;
+  line-height: 1.3;
+}
+
+.admin-dashboard .text-sm {
+  font-size: 14px !important;
+  line-height: 1.4;
+}
+
+.admin-dashboard .text-base {
+  font-size: 16px !important;
+  line-height: 1.5;
+}
+
+.admin-dashboard .text-lg {
+  font-size: 18px !important;
+  line-height: 1.5;
+}
+
+.admin-dashboard .text-xl {
+  font-size: 20px !important;
+  line-height: 1.4;
+}
+
+.admin-dashboard .text-2xl {
+  font-size: 24px !important;
+  line-height: 1.3;
+}
+
+/* Button text optimization */
+.admin-dashboard button {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+}
+
+/* Card titles */
+.admin-dashboard .card-title {
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+}
+
+/* Status indicators */
+.admin-dashboard .status-text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+}
+
+/* Ensure proper contrast */
+.admin-dashboard .text-gray-400 {
+  color: #9ca3af !important;
+}
+
+.admin-dashboard .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Enhanced visibility for small text */
+.admin-dashboard .text-xs {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Header specific styles to match image */
+.admin-dashboard header {
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Status indicators in header */
+.admin-dashboard header .text-green-400 {
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Time and date display */
+.admin-dashboard header .text-cyan-300 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Better button padding for touch targets */
+.admin-dashboard button {
+  min-height: 32px;
+  padding: 6px 12px;
+}
+
+/* Improved spacing for compact layout */
+.admin-dashboard .space-y-2 > * + * {
+  margin-top: 0.5rem;
+}
+
+.admin-dashboard .space-y-3 > * + * {
+  margin-top: 0.75rem;
+}
+
+.admin-dashboard .space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+/* Enhanced card styling */
+.admin-dashboard .card {
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Better focus states */
+.admin-dashboard button:focus,
+.admin-dashboard input:focus {
+  outline: 2px solid #00fff7;
+  outline-offset: 2px;
+}
+
+/* Panel titles and content to match image */
+.admin-dashboard .card-header {
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+}
+
+.admin-dashboard .card-content {
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Statistics and numbers */
+.admin-dashboard .text-xl,
+.admin-dashboard .text-2xl,
+.admin-dashboard .text-lg {
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* All text elements */
+.admin-dashboard span,
+.admin-dashboard p,
+.admin-dashboard div {
+  font-family: 'Share Tech Mono', 'Courier New', 'Monaco', 'Menlo', 'Consolas', 'Roboto Mono', 'Fira Code', 'Source Code Pro', monospace;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Improved scrollbar styling */
+.admin-dashboard ::-webkit-scrollbar {
+  width: 6px;
+}
+
+.admin-dashboard ::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.admin-dashboard ::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 247, 0.3);
+  border-radius: 3px;
+}
+
+.admin-dashboard ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 247, 0.5);
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import mapboxgl from 'mapbox-gl';
 import MapboxDraw from '@mapbox/mapbox-gl-draw';
 import * as turf from '@turf/turf';
@@ -91,8 +91,8 @@ export const AdvancedMap: React.FC<AdvancedMapProps> = ({
   const [sweepColor, setSweepColor] = useState('#ff0000');
   const [isDrawing, setIsDrawing] = useState(false);
 
-  // Configuration
-  const geoSweepConfig: GeoSweepConfig = {
+  // Configuration - use useMemo to prevent infinite re-renders
+  const geoSweepConfig: GeoSweepConfig = useMemo(() => ({
     enabled: showGeoSweep,
     defaultRadius: 5000,
     colors: {
@@ -100,9 +100,9 @@ export const AdvancedMap: React.FC<AdvancedMapProps> = ({
       helper: '#00ff00',
       neutral: '#ffff00',
     },
-  };
+  }), [showGeoSweep]);
 
-  const clusteringConfig: ClusteringConfig = {
+  const clusteringConfig: ClusteringConfig = useMemo(() => ({
     enabled: showClusters,
     maxZoom: 14,
     radius: 100, // meters
@@ -112,7 +112,7 @@ export const AdvancedMap: React.FC<AdvancedMapProps> = ({
       responder: '#0000ff',
       mixed: '#ffff00',
     },
-  };
+  }), [showClusters]);
 
   // Initialize map
   useEffect(() => {
@@ -219,18 +219,28 @@ export const AdvancedMap: React.FC<AdvancedMapProps> = ({
 
   // Load zones from database
   const loadZones = async () => {
-    const { zones: loadedZones } = await GeospatialService.getZones();
+    try {
+      const { zones: loadedZones, error } = await GeospatialService.getZones();
+      if (error) {
+        console.warn('Failed to load zones:', error);
+        setZones([]);
+      } else {
     setZones(loadedZones);
+      }
+    } catch (error) {
+      console.warn('Error loading zones:', error);
+      setZones([]);
+    }
   };
 
   // Setup event listeners
   const setupEventListeners = () => {
     if (!map.current || !draw.current) return;
 
-    // Draw events
-    draw.current.on('create', handleDrawCreate);
-    draw.current.on('update', handleDrawUpdate);
-    draw.current.on('delete', handleDrawDelete);
+    // Draw events - MapboxDraw uses map events, not direct draw events
+    map.current.on('draw.create', handleDrawCreate);
+    map.current.on('draw.update', handleDrawUpdate);
+    map.current.on('draw.delete', handleDrawDelete);
 
     // Map click for GeoSweep
     map.current.on('click', handleMapClick);

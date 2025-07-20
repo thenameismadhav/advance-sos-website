@@ -62,10 +62,15 @@ export class APIService {
 
       const { data: events, error } = await query;
 
-      if (error) throw error;
+      if (error) {
+        console.warn('Error fetching SOS events:', error);
+        // Return empty array instead of throwing error
+        return { events: [], error };
+      }
 
       return { events: events || [], error: null };
     } catch (error) {
+      console.warn('Exception fetching SOS events:', error);
       return { events: [], error };
     }
   }
@@ -204,10 +209,15 @@ export class APIService {
 
       const { data: helpers, error } = await query;
 
-      if (error) throw error;
+      if (error) {
+        console.warn('Error fetching helpers:', error);
+        // Return empty array instead of throwing error
+        return { helpers: [], error };
+      }
 
       return { helpers: helpers || [], error: null };
     } catch (error) {
+      console.warn('Exception fetching helpers:', error);
       return { helpers: [], error };
     }
   }
@@ -316,10 +326,15 @@ export class APIService {
 
       const { data: responders, error } = await query;
 
-      if (error) throw error;
+      if (error) {
+        console.warn('Error fetching responders:', error);
+        // Return empty array instead of throwing error
+        return { responders: [], error };
+      }
 
       return { responders: responders || [], error: null };
     } catch (error) {
+      console.warn('Exception fetching responders:', error);
       return { responders: [], error };
     }
   }

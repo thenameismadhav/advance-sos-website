@@ -124,18 +124,31 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       {/* Main Content */}
       <div className="lg:pl-64">
         {/* Top Header */}
-        <div className="floating-panel top-0 left-0 right-0 bg-gray-800 border-b border-gray-700">
+        <div className="sticky top-0 z-40 bg-gray-800 border-b border-gray-700 shadow-lg">
           <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
+            {/* Left Side - Mobile Menu Button */}
+            <div className="flex items-center">
             <button
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden text-gray-400 hover:text-white"
+                className="lg:hidden text-gray-400 hover:text-white p-2 rounded-md hover:bg-gray-700 transition-colors"
+                aria-label="Open menu"
             >
-              ☰
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
             </button>
 
+              {/* Page Title */}
+              <h1 className="ml-4 lg:ml-0 text-lg font-semibold text-white">
+                SOS Admin Dashboard
+              </h1>
+            </div>
+
+            {/* Right Side - Controls */}
             <div className="flex items-center space-x-4">
               {/* Language Selector */}
-              <select className="bg-gray-700 text-white text-sm rounded px-2 py-1">
+              <div className="relative">
+                <select className="bg-gray-700 text-white text-sm rounded-md px-3 py-2 border border-gray-600 focus:border-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-500 appearance-none cursor-pointer">
                 <option value="en">🇺🇸 English</option>
                 <option value="hi">🇮🇳 हिंदी</option>
                 <option value="gu">🇮🇳 ગુજરાતી</option>
@@ -147,20 +160,37 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
                 <option value="ml">🇮🇳 മലയാളം</option>
                 <option value="pa">🇮🇳 ਪੰਜਾਬੀ</option>
               </select>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
 
               {/* Notifications */}
-              <button className="text-gray-400 hover:text-white relative">
-                🔔
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
+              <button className="relative text-gray-400 hover:text-white p-2 rounded-md hover:bg-gray-700 transition-colors">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM10.5 3.75a6 6 0 0 1 6 6v3.75l1.5 1.5H3l1.5-1.5V9.75a6 6 0 0 1 6-6z" />
+                </svg>
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
                   3
                 </span>
               </button>
 
-              {/* Admin Menu */}
+              {/* Admin Profile */}
               <div className="relative">
-                <button className="flex items-center text-gray-400 hover:text-white">
-                  <span className="mr-2">{admin?.name || 'Admin'}</span>
-                  ▼
+                <button className="flex items-center text-gray-400 hover:text-white p-2 rounded-md hover:bg-gray-700 transition-colors">
+                  <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center mr-2">
+                    <span className="text-white text-sm font-medium">
+                      {admin?.name?.charAt(0).toUpperCase() || 'A'}
+                    </span>
+                  </div>
+                  <span className="hidden sm:block text-sm font-medium">
+                    {admin?.name || 'Admin'}
+                  </span>
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
                 </button>
                 {/* Dropdown menu would go here */}
               </div>

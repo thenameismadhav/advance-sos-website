@@ -41,36 +41,53 @@ const Navbar = () => {
         scrolled ? "bg-black/80 backdrop-blur-md py-3 shadow-lg" : "bg-transparent py-5"
       )}
     >
-      <div className="container flex items-center justify-between">
+      <div className="container mx-auto px-4 flex items-center justify-between h-16">
+        {/* Logo Section */}
         <div className="flex items-center">
-          <div className="text-sos-red font-bold text-2xl tracking-tight flex items-center cursor-pointer" onClick={() => navigate('/')}>
+          <div 
+            className="text-sos-red font-bold text-2xl tracking-tight flex items-center cursor-pointer hover:scale-105 transition-transform" 
+            onClick={() => navigate('/')}
+          >
             <span className="text-white">Advance</span>
             <span className="ml-1">SOS</span>
           </div>
         </div>
-        <nav className="hidden md:flex space-x-6 text-sm">
-          <a href="#features" className="text-white hover:text-sos-red transition-colors">Features</a>
-          <a href="#tech" className="text-white hover:text-sos-red transition-colors">Tech Stack</a>
-          <a href="#vision" className="text-white hover:text-sos-red transition-colors">Vision</a>
-          <button 
-            onClick={goToAdmin}
-            className="text-white hover:text-sos-red transition-colors"
+
+        {/* Navigation Links */}
+        <nav className="hidden md:flex items-center space-x-8 text-sm">
+          <a 
+            href="#features" 
+            className="text-white hover:text-sos-red transition-colors duration-200 font-medium"
           >
-            Admin Panel
-          </button>
+            Features
+          </a>
+          <a 
+            href="#tech" 
+            className="text-white hover:text-sos-red transition-colors duration-200 font-medium"
+          >
+            Tech Stack
+          </a>
+          <a 
+            href="#vision" 
+            className="text-white hover:text-sos-red transition-colors duration-200 font-medium"
+          >
+            Vision
+          </a>
         </nav>
-        <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-2 text-white">
+
+        {/* Right Side - Admin Info and Actions */}
+        <div className="flex items-center space-x-4">
+          <div className="hidden sm:flex items-center space-x-3 text-white">
             <User className="h-4 w-4" />
-            <span className="hidden sm:block">Admin</span>
-            <span className="bg-sos-red text-white text-xs px-2 py-1 rounded-full">
+            <span className="text-sm font-medium">Admin</span>
+            <span className="bg-sos-red text-white text-xs px-3 py-1 rounded-full font-medium">
               ADMIN
             </span>
           </div>
           <Button 
             variant="outline" 
             size="sm"
-            className="text-white border-sos-red hover:bg-sos-red hover:text-white transition-colors"
+            className="text-white border-sos-red hover:bg-sos-red hover:text-white transition-all duration-200 font-medium"
             onClick={goToAdmin}
           >
             Admin Panel

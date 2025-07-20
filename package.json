@@ -9,7 +9,8 @@
     "dev": "concurrently \"npm run dev:info-web\" \"npm run dev:admin-panel\"",
     "dev:info-web": "cd apps/info-web && npm run dev",
     "dev:admin-panel": "cd apps/admin-panel && npm run dev -- --port 8081",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "test-build": "node scripts/test-build.js"
   },
   "devDependencies": {
     "rimraf": "^5.0.0",

@@ -53,8 +53,8 @@ CREATE TABLE public.sos_events (
     status sos_status DEFAULT 'active',
     description TEXT,
     priority INTEGER DEFAULT 3 CHECK (priority >= 1 AND priority <= 5),
-    assigned_helper_id UUID,
-    assigned_responder_id UUID,
+    assigned_helper_id UUID REFERENCES public.helpers(id) ON DELETE SET NULL,
+    assigned_responder_id UUID REFERENCES public.responders(id) ON DELETE SET NULL,
     resolved_at TIMESTAMP WITH TIME ZONE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()

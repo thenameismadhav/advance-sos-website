@@ -32,6 +32,9 @@ export const LocationProvider: React.FC<LocationProviderProps> = ({ children }) 
   const [watchId, setWatchId] = useState<number>(-1);
 
   const requestLocationPermission = async () => {
+    // Prevent multiple simultaneous requests
+    if (isLoading) return;
+    
     setIsLoading(true);
     setError(null);
     
@@ -40,7 +43,8 @@ export const LocationProvider: React.FC<LocationProviderProps> = ({ children }) 
       setUserLocation(location);
       setHasPermission(true);
       
-      // Start watching for location updates
+      // Only start watching if not already watching
+      if (watchId === -1) {
       const newWatchId = watchLocation(
         (updatedLocation) => {
           setUserLocation(updatedLocation);
@@ -52,6 +56,7 @@ export const LocationProvider: React.FC<LocationProviderProps> = ({ children }) 
         }
       );
       setWatchId(newWatchId);
+      }
       
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to get location';
